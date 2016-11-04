@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Cinema.CinemaPlacesPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cinema"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="630" MinWidth="630">
+    
+        <StackPanel x:Name="MainStackPanel" Orientation="Vertical" Background="#FFEEF9FF">
+       
+    </StackPanel>
+
+    
+</UserControl>

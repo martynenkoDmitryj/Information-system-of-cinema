@@ -1,0 +1,56 @@
+﻿<Window x:Class="Cinema.Views.HallSizeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Размеры залов" Height="291.477" Width="635.796">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ClosingCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition Width="119*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+        </Grid.RowDefinitions>
+        <DataGrid  AlternatingRowBackground="#FFFDF7DC" HorizontalGridLinesBrush="#FFCB6969" VerticalGridLinesBrush="#FFCB6969" ItemsSource="{Binding HallSizes, Mode=TwoWay}" AutoGenerateColumns="False" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="0" Grid.Column="0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding ID, Mode=OneWay}"    />
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Наименование, Mode=TwoWay}"    />
+                <DataGridTextColumn Header="Количество Рядов"  Binding="{Binding КоличествоРядов, Mode=TwoWay}" />
+
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+        <GroupBox Header="Добавить новый" Grid.Column="1" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="111"/>
+                    <ColumnDefinition Width="Auto" MinWidth="111" />
+                    <ColumnDefinition Width="Auto" MinWidth="4"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="29*"/>
+                    <RowDefinition Height="150*"/>
+                    <RowDefinition Height="33*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Наименование:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Label Content="Количество рядов:" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewName, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  />
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewCount, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" />
+
+                <Button Content="Добавить" Grid.Column="1" Grid.Row="3"  Height="27" VerticalAlignment="Top" Command="{Binding ClickCommand}" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

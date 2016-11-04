@@ -1,0 +1,49 @@
+﻿<Window x:Class="Cinema.Views.PrintTicketView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema.Views"
+        mc:Ignorable="d"
+        Title="Печать билета" Height="170.821" Width="527.763" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid>
+        <Grid x:Name="TicketGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="99*"/>
+                <ColumnDefinition Width="48*"/>
+                <ColumnDefinition Width="116*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="115*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Dima\Desktop\elitefon.ru_18908.jpg" Stretch="UniformToFill" />
+            </Grid.Background>
+            <Label Content="Фильм:" Grid.Column="0" Grid.Row="0" FontWeight="Bold" />
+            <Label Content="Зал:" Grid.Column="0" Grid.Row="1" FontWeight="Bold" />
+            <Label Content="Ряд:" Grid.Column="2" Grid.Row="1" FontWeight="Bold" />
+            <Label Content="Место:" Grid.Column="4" Grid.Row="1" FontWeight="Bold" />
+            <Label Content="Цена:" Grid.Column="0" Grid.Row="2" FontWeight="Bold" />
+            <Label Content="Дата:" Grid.Column="4" Grid.Row="2" FontWeight="Bold" />
+            <Label Content="Время:" Grid.Column="2" Grid.Row="2" FontWeight="Bold" />
+
+            <Label x:Name="Film" Content="Фильм" Grid.ColumnSpan="5" Grid.Column="1"  Grid.Row="0" FontWeight="Bold" Foreground="#FFB24848" FontSize="18.667" FontStyle="Italic" />
+            <Label x:Name="Hall" Content="1" Grid.Column="1" FontWeight="Bold" Foreground="#FFF70808" FontSize="24" Margin="0,33,0,7" Grid.RowSpan="2" />
+            <Label x:Name="Row" Content="5" Grid.Column="3" FontWeight="Bold" Foreground="#FFF70808" FontSize="24" Margin="0,33,0,7" Grid.RowSpan="2" />
+            <Label x:Name="Place" Content="3" Grid.Column="5" FontWeight="Bold" Foreground="#FFF70808" FontSize="24" Margin="0,33,0,7" Grid.RowSpan="2" />
+            <Label x:Name="Price" Content="500руб" Grid.Column="1" Grid.Row="2" FontWeight="Bold" Foreground="#FFB24848" FontSize="13" FontStyle="Italic" />
+            <Label x:Name="Date" Content="12/12/2012" Grid.Column="5" FontWeight="Bold" Foreground="#FFF70808" FontSize="16" Grid.Row="2" />
+            <Label x:Name="Time" Content="19:45" Grid.Column="3" Grid.Row="2" FontWeight="Bold" Foreground="#FFF70808" FontSize="18" BorderThickness="0,0,0,6" Margin="0,-7,0,7" />
+
+
+            <Label  Content="Кинотеатр 'Кино'" Grid.Row="0" Grid.Column="5" FontStyle="Italic"  />
+
+        </Grid>
+        <Button Content="Печать" Margin="455,28,10,96" Click="Button_Click" FontSize="9.333"/>
+    </Grid>
+</Window>

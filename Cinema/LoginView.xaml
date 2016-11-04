@@ -1,0 +1,30 @@
+﻿<Window x:Class="Cinema.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema"
+        mc:Ignorable="d"
+        Title="Вход" Height="136.534" Width="247.585" ResizeMode="NoResize">
+    <Grid Background="#FFEEF9FF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"></RowDefinition>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="29*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto" MinWidth="169"></ColumnDefinition>
+            <ColumnDefinition Width="auto" MinWidth="19"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="Логин:" Grid.Column="0" Grid.Row="1"/>
+        <Label Content="Пароль:" Grid.Column="0" Grid.Row="2"/>
+        <TextBox Margin="0,3,0,3" x:Name="LoginTextBox" Text="{Binding Login}"  Grid.Column="1" Grid.Row="1" />
+        <TextBox Margin="0,3,0,3" x:Name="Password" Text="{Binding Password}"  Grid.Column="1" Grid.Row="2" />
+        <Button Command="{Binding ClickCommand}"  Content="Войти" Grid.Row="3" Grid.Column="1" Margin="112,0,0,0"/>
+    </Grid>
+</Window>

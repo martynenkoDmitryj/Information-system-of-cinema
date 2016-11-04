@@ -1,0 +1,37 @@
+﻿<Window x:Class="Cinema.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema"
+        mc:Ignorable="d"
+        Title="ИС Кинотеатр" Height="175" Width="362.182" Closed="Window_Closed" ResizeMode="NoResize" Loaded="Window_Loaded" >
+
+    <TabControl x:Name="tabControl" >
+        <TabControl.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0"/>
+                <GradientStop Color="#FFEEF9FF" Offset="1"/>
+            </LinearGradientBrush>
+        </TabControl.Background>
+        <TabItem Header="Справочники">
+            <Grid Background="#FFEEF9FF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="101*"/>
+                    <ColumnDefinition Width="239*"/>
+                </Grid.ColumnDefinitions>
+                <Button Visibility="Hidden" x:Name="button" Content="Пользователи" HorizontalAlignment="Left" Height="25" Margin="10,100,0,-15" VerticalAlignment="Top" Width="309" Click="button_Click" Grid.ColumnSpan="2"/>
+                <Button x:Name="button_Copy" Content="Фильмы" HorizontalAlignment="Left" Height="25" Margin="10,40,0,0" VerticalAlignment="Top" Width="309" Click="button_Copy_Click" Grid.ColumnSpan="2"/>
+                <Button x:Name="button_Copy1" Content="Залы" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="309" Click="button_Copy1_Click" Grid.ColumnSpan="2"/>
+                <Button x:Name="button_Copy2" Content="Сеансы" HorizontalAlignment="Left" Height="25" Margin="10,70,0,0" VerticalAlignment="Top" Width="309" Click="button_Copy2_Click" Grid.ColumnSpan="2"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Действия">
+            <Grid Background="#FFEEF9FF">
+                <Button x:Name="button_Copy3" Content="Купить билет" HorizontalAlignment="Left" Height="31" Margin="10,47,0,0" VerticalAlignment="Top" Width="309" Click="button_Copy3_Click"/>
+                <Button x:Name="button_Copy4" Content="Бронирование" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="309" Click="button_Copy4_Click"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+</Window>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="Cinema.Views.FilmsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Фильмы" Height="320.454" Width="796.023" Background="#FFEEF9FF">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ClosingCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="129*"/>
+            <ColumnDefinition Width="68*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding Films, Mode=TwoWay}" AutoGenerateColumns="False" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="0" Grid.Column="0" AlternatingRowBackground="#FFFDF7DC" HorizontalGridLinesBrush="#FFCB6969" VerticalGridLinesBrush="#FFCB6969" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Название, Mode=TwoWay}"    />
+                <DataGridTextColumn Header="Жанр"  Binding="{Binding Жанр, Mode=TwoWay}" />
+                <DataGridTextColumn Header="Длительность"  Binding="{Binding Длительность, Mode=TwoWay}" />
+                <DataGridTextColumn Header="Год" Binding="{Binding Год, Mode=TwoWay}"    />
+                <DataGridTextColumn Header="Страна"  Binding="{Binding Страна, Mode=TwoWay}" />
+                <DataGridTextColumn Header="Авторы"  Binding="{Binding Авторы, Mode=TwoWay}" />
+                <DataGridTextColumn Header="Описание"  Binding="{Binding Описание, Mode=TwoWay}" />
+
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+        <GroupBox Header="Добавить новый" Grid.Column="1" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="87*"/>
+                    <ColumnDefinition Width="168*" />
+                    <ColumnDefinition Width="5*" />
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MinHeight="70"/>
+                    <RowDefinition Height="Auto" MinHeight="33"/>
+
+                </Grid.RowDefinitions>
+                <Label Content="Название:" Grid.Row="0" Grid.Column="0"/>
+                <Label Content="Жанр:" Grid.Row="1" Grid.Column="0"/>
+                <Label Content="Длительность:" Grid.Row="2" Grid.Column="0"/>
+                <Label Content="Год:" Grid.Row="3" Grid.Column="0"/>
+                <Label Content="Страна:" Grid.Row="4" Grid.Column="0"/>
+                <Label Content="Авторы:" Grid.Row="5" Grid.Column="0"/>
+                <Label Content="Описание:" Grid.Row="6" Grid.Column="0"/>
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewName, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  />
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewGenre, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"  />
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewDuration, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"  />
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewYear, Mode=TwoWay}" Grid.Row="3" Grid.Column="1"  />
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewCountry, Mode=TwoWay}" Grid.Row="4" Grid.Column="1"  />
+                <TextBox Margin="0,3,0,3" Text="{Binding Path=NewAuthors, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"  />
+                <TextBox Margin="0,3,0,3" TextWrapping="Wrap" Text="{Binding Path=NewDescription, Mode=TwoWay}" Grid.Row="6" Grid.Column="1"  />
+
+                <Button Content="Добавить" Grid.Column="1" Grid.Row="7" Height="27"  Command="{Binding ClickCommand}" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

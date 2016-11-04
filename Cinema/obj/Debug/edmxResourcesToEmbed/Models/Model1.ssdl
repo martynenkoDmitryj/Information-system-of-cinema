@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Билеты">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDСеанса" Type="int" />
+    <Property Name="IDЗала" Type="int" />
+    <Property Name="Ряд" Type="int" />
+    <Property Name="Место" Type="int" />
+    <Property Name="Бронь" Type="bit" />
+  </EntityType>
+  <EntityType Name="Бронь">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDБилета" Type="int" />
+    <Property Name="ФИО" Type="varchar" MaxLength="50" />
+    <Property Name="Телефон" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Залы">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НомерЗала" Type="int" />
+    <Property Name="IDРазмера" Type="int" />
+  </EntityType>
+  <EntityType Name="Пользователи">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Логин" Type="varchar" MaxLength="50" />
+    <Property Name="Пароль" Type="varchar" MaxLength="50" />
+    <Property Name="УровеньДоступа" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="РазмерыЗалов">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="varchar" MaxLength="50" />
+    <Property Name="КоличествоРядов" Type="int" />
+  </EntityType>
+  <EntityType Name="Сеансы">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDФильма" Type="int" />
+    <Property Name="IDЗала" Type="int" />
+    <Property Name="Дата" Type="datetime" />
+    <Property Name="Время" Type="varchar" MaxLength="50" />
+    <Property Name="Премьера" Type="bit" />
+  </EntityType>
+  <EntityType Name="СтоимостьБилетов">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDСеанса" Type="int" />
+    <Property Name="Стоимость" Type="money" />
+  </EntityType>
+  <EntityType Name="Фильмы">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="varchar" MaxLength="50" />
+    <Property Name="Жанр" Type="varchar" MaxLength="50" />
+    <Property Name="Длительность" Type="varchar" MaxLength="50" />
+    <Property Name="Год" Type="int" />
+    <Property Name="Страна" Type="varchar" MaxLength="50" />
+    <Property Name="Авторы" Type="varchar" MaxLength="50" />
+    <Property Name="Описание" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_Table_1_РазмерыЗалов">
+    <End Role="РазмерыЗалов" Type="Self.РазмерыЗалов" Multiplicity="0..1" />
+    <End Role="Залы" Type="Self.Залы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="РазмерыЗалов">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Залы">
+        <PropertyRef Name="IDРазмера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Билеты_Залы">
+    <End Role="Залы" Type="Self.Залы" Multiplicity="0..1" />
+    <End Role="Билеты" Type="Self.Билеты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Залы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Билеты">
+        <PropertyRef Name="IDЗала" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Билеты_Сеансы">
+    <End Role="Сеансы" Type="Self.Сеансы" Multiplicity="0..1" />
+    <End Role="Билеты" Type="Self.Билеты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сеансы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Билеты">
+        <PropertyRef Name="IDСеанса" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Бронь_Билеты">
+    <End Role="Билеты" Type="Self.Билеты" Multiplicity="0..1" />
+    <End Role="Бронь" Type="Self.Бронь" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Билеты">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Бронь">
+        <PropertyRef Name="IDБилета" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сеансы_Залы">
+    <End Role="Залы" Type="Self.Залы" Multiplicity="0..1" />
+    <End Role="Сеансы" Type="Self.Сеансы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Залы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Сеансы">
+        <PropertyRef Name="IDЗала" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сеансы_Фильмы">
+    <End Role="Фильмы" Type="Self.Фильмы" Multiplicity="0..1" />
+    <End Role="Сеансы" Type="Self.Сеансы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Фильмы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Сеансы">
+        <PropertyRef Name="IDФильма" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_СтоимостьБилетов_Сеансы">
+    <End Role="Сеансы" Type="Self.Сеансы" Multiplicity="0..1" />
+    <End Role="СтоимостьБилетов" Type="Self.СтоимостьБилетов" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сеансы">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="СтоимостьБилетов">
+        <PropertyRef Name="IDСеанса" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CinemaModelStoreContainer">
+    <EntitySet Name="Билеты" EntityType="Self.Билеты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Бронь" EntityType="Self.Бронь" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Залы" EntityType="Self.Залы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Пользователи" EntityType="Self.Пользователи" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="РазмерыЗалов" EntityType="Self.РазмерыЗалов" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Сеансы" EntityType="Self.Сеансы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="СтоимостьБилетов" EntityType="Self.СтоимостьБилетов" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Фильмы" EntityType="Self.Фильмы" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Table_1_РазмерыЗалов" Association="Self.FK_Table_1_РазмерыЗалов">
+      <End Role="РазмерыЗалов" EntitySet="РазмерыЗалов" />
+      <End Role="Залы" EntitySet="Залы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Билеты_Залы" Association="Self.FK_Билеты_Залы">
+      <End Role="Залы" EntitySet="Залы" />
+      <End Role="Билеты" EntitySet="Билеты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Билеты_Сеансы" Association="Self.FK_Билеты_Сеансы">
+      <End Role="Сеансы" EntitySet="Сеансы" />
+      <End Role="Билеты" EntitySet="Билеты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Бронь_Билеты" Association="Self.FK_Бронь_Билеты">
+      <End Role="Билеты" EntitySet="Билеты" />
+      <End Role="Бронь" EntitySet="Бронь" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сеансы_Залы" Association="Self.FK_Сеансы_Залы">
+      <End Role="Залы" EntitySet="Залы" />
+      <End Role="Сеансы" EntitySet="Сеансы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сеансы_Фильмы" Association="Self.FK_Сеансы_Фильмы">
+      <End Role="Фильмы" EntitySet="Фильмы" />
+      <End Role="Сеансы" EntitySet="Сеансы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_СтоимостьБилетов_Сеансы" Association="Self.FK_СтоимостьБилетов_Сеансы">
+      <End Role="Сеансы" EntitySet="Сеансы" />
+      <End Role="СтоимостьБилетов" EntitySet="СтоимостьБилетов" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CinemaModelStoreContainer" CdmEntityContainer="CinemaEntities">
+    <EntitySetMapping Name="Билеты">
+      <EntityTypeMapping TypeName="CinemaModel.Билеты">
+        <MappingFragment StoreEntitySet="Билеты">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDСеанса" ColumnName="IDСеанса" />
+          <ScalarProperty Name="IDЗала" ColumnName="IDЗала" />
+          <ScalarProperty Name="Ряд" ColumnName="Ряд" />
+          <ScalarProperty Name="Место" ColumnName="Место" />
+          <ScalarProperty Name="Бронь" ColumnName="Бронь" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Бронь">
+      <EntityTypeMapping TypeName="CinemaModel.Бронь">
+        <MappingFragment StoreEntitySet="Бронь">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDБилета" ColumnName="IDБилета" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Залы">
+      <EntityTypeMapping TypeName="CinemaModel.Залы">
+        <MappingFragment StoreEntitySet="Залы">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="НомерЗала" ColumnName="НомерЗала" />
+          <ScalarProperty Name="IDРазмера" ColumnName="IDРазмера" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Пользователи">
+      <EntityTypeMapping TypeName="CinemaModel.Пользователи">
+        <MappingFragment StoreEntitySet="Пользователи">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="УровеньДоступа" ColumnName="УровеньДоступа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="РазмерыЗалов">
+      <EntityTypeMapping TypeName="CinemaModel.РазмерыЗалов">
+        <MappingFragment StoreEntitySet="РазмерыЗалов">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="КоличествоРядов" ColumnName="КоличествоРядов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сеансы">
+      <EntityTypeMapping TypeName="CinemaModel.Сеансы">
+        <MappingFragment StoreEntitySet="Сеансы">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDФильма" ColumnName="IDФильма" />
+          <ScalarProperty Name="IDЗала" ColumnName="IDЗала" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Время" ColumnName="Время" />
+          <ScalarProperty Name="Премьера" ColumnName="Премьера" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="СтоимостьБилетов">
+      <EntityTypeMapping TypeName="CinemaModel.СтоимостьБилетов">
+        <MappingFragment StoreEntitySet="СтоимостьБилетов">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDСеанса" ColumnName="IDСеанса" />
+          <ScalarProperty Name="Стоимость" ColumnName="Стоимость" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Фильмы">
+      <EntityTypeMapping TypeName="CinemaModel.Фильмы">
+        <MappingFragment StoreEntitySet="Фильмы">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Жанр" ColumnName="Жанр" />
+          <ScalarProperty Name="Длительность" ColumnName="Длительность" />
+          <ScalarProperty Name="Год" ColumnName="Год" />
+          <ScalarProperty Name="Страна" ColumnName="Страна" />
+          <ScalarProperty Name="Авторы" ColumnName="Авторы" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
